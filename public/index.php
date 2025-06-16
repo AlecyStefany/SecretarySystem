@@ -50,7 +50,6 @@ Router::delete('/course/{id}', [CourseController::class, 'removeCourse']);
 
 Router::get('/registration', [RegistrationController::class, 'getRegistration']);
 Router::get('/registration-by-course', [RegistrationController::class, 'getRegistrationByCourse']);
-Router::get('/courses-with-registrations', [RegistrationController::class, 'getCourserWithRegistrations']);
 Router::post('/registration', [RegistrationController::class, 'insertRegistration']);
 
 Router::run([

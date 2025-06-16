@@ -94,8 +94,12 @@ export function loadGenericPage({
 
       if (btnClear) {
         btnClear.addEventListener('click', () => {
-          const inputs = document.querySelectorAll('.filter-input');
-          inputs.forEach(input => (input.value = ''));
+          const inputsText = document.querySelectorAll('input.filter-input[type="text"], input.filter-input[type="search"]');
+          inputsText.forEach(input => input.value = '');
+
+          const selects = document.querySelectorAll('select.filter-select');
+          selects.forEach(select => select.value = '');
+
           currentPage = 1;
           loadData();
         });

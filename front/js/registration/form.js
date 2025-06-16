@@ -1,5 +1,5 @@
 import { fetchStudents, fetchCourses, createRegistration, updateRegistration } from './get.js';
-import { showAlertModal } from '../modal.js';
+import { showAlertModal } from '../modal.js'; 
 
 let registrationForm = document.getElementById('registrationForm');
 const modalLabel = document.getElementById('registrationModalLabel');
@@ -11,7 +11,7 @@ let registrationModalElement = document.getElementById('registrationModal');
 let bootstrapModal;
 
 export async function initForm() {
-   registrationModalElement = document.getElementById('registrationModal');
+  registrationModalElement = document.getElementById('registrationModal');
   bootstrapModal = bootstrap.Modal.getOrCreateInstance(registrationModalElement);
 
   registrationForm = document.getElementById('registrationForm');
@@ -24,8 +24,9 @@ export async function initForm() {
   await populateCoursesSelect();
 
   registrationForm.addEventListener('submit', async (e) => {
+    console.log(registrationFormMessage)
     e.preventDefault();
-    registrationFormMessage.textContent = '';
+    registrationFormMessage.textContent = ''; 
 
     const id = registrationFormId.value;
     const studentId = registrationStudent.value;
@@ -44,22 +45,24 @@ export async function initForm() {
         await createRegistration({ studentId, courseId });
         showAlertModal('Sucesso', 'Matrícula criada com sucesso', 'success');
       }
+
       bootstrapModal.hide();
       if (typeof window.loadPage === 'function') {
-        window.loadPage();
+        window.loadPage();  
       }
     } catch (error) {
       registrationFormMessage.textContent = error.message;
+      showAlertModal('Erro', error.message, 'error');
     }
   });
 }
 
 export async function openRegistrationModalForCreate() {
   modalLabel.textContent = 'Nova Matrícula';
-  registrationFormId.value = '';
-  registrationStudent.value = '';
-  registrationCourse.value = '';
-  registrationFormMessage.textContent = '';
+  registrationFormId.value = '';  
+  registrationStudent.value = '';  
+  registrationCourse.value = '';  
+  registrationFormMessage.textContent = '';  
   bootstrapModal.show();
 }
 
@@ -77,13 +80,13 @@ async function populateStudentsSelect() {
     const data = await fetchStudents();
     const students = data.INFO.ALUNOS || data;
     const registrationStudent = document.getElementById('registrationStudent');
+
     if (!registrationStudent) {
       console.error('Elemento #registrationStudent não encontrado');
       return;
     }
 
     registrationStudent.innerHTML = '<option value="">Selecione o Aluno</option>';
-
     students.forEach((student) => {
       const opt = document.createElement('option');
       opt.value = student.id;
@@ -99,15 +102,14 @@ async function populateCoursesSelect() {
   try {
     const data = await fetchCourses();
     const courses = data.INFO.CURSOS || data;
-
     const registrationCourse = document.getElementById('registrationCourse');
+
     if (!registrationCourse) {
       console.error('Elemento #registrationCourse não encontrado');
       return;
     }
 
     registrationCourse.innerHTML = '<option value="">Selecione o Curso</option>';
-
     courses.forEach((course) => {
       const opt = document.createElement('option');
       opt.value = course.id;

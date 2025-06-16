@@ -97,13 +97,6 @@ class RegistrationService
         return $formated;
     }
 
-    public function getCoursesWithRegistration(): array
-    {
-        $repository = $this->repository;
-
-        return $repository->getCoursesWithRegistration();
-    }
-    
     private function calculatePagination(int $page, array $whereKeys = [], array $whereValues = []): array
     {
         $repository = $this->repository;

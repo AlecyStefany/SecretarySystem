@@ -72,3 +72,24 @@ export function showConfirmModal(title, message, confirmCallback) {
 
   bootstrapModal.show();
 }
+export function showRegistrationModal() {
+  const filterCourse = document.getElementById('filterCourse');
+  
+  registrationModalEl.addEventListener('shown.bs.modal', async function () {
+    try {
+      console.log("Modal de matrícula foi mostrado. Vamos preencher os filtros...");
+
+      if (filterCourse) {
+        console.log("Elemento #filterCourse encontrado:", filterCourse);
+        await populateFilters();  
+        await initForm();         
+      } else {
+        console.error('Erro: #filterCourse não encontrado!');
+      }
+    } catch (error) {
+      console.error('Erro ao inicializar o formulário no modal de matrícula', error);
+    }
+  });
+
+  registrationBootstrapModal.show();
+}

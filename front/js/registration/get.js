@@ -3,7 +3,6 @@ const API_BASE_URL = "http://localhost:8000";
 export async function fetchRegistrations(filters = {}) {
   const params = new URLSearchParams();
 
-  if (filters.student) params.append('student', filters.student);
   if (filters.course) params.append('courseId', filters.course);
   if (filters.page) params.append('page', filters.page);
 
@@ -12,7 +11,7 @@ export async function fetchRegistrations(filters = {}) {
   const response = await fetch(url);
     if (!response.ok) {
     const err = await response.json();
-    throw new Error(err.message || 'Erro ao buscar matrículas');
+    throw new Error(err.message || JSON.stringify(err));
   }
     return await response.json();
 

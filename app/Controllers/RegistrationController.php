@@ -56,10 +56,4 @@ class RegistrationController
         $this->sucessResponse("", $response);
     }
 
-    public function getCourserWithRegistrations(): void
-    {
-        $response = $this->service->getCoursesWithRegistration();
-        $this->sucessResponse("", $response);
-    }
-
 }

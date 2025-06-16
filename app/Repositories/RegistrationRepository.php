@@ -121,18 +121,4 @@ class RegistrationRepository
         return (int) $db->fetchColumn();
     }
 
-    public function getCoursesWithRegistration(): array
-    {
-        $query = "
-        SELECT DISTINCT c.id, c.name
-        FROM courses c
-        INNER JOIN registration r ON r.course_id = c.id
-        ORDER BY c.name ASC
-    ";
-
-        $stmt = $this->connection->prepare($query);
-        $stmt->execute();
-
-        return $stmt->fetchAll(PDO::FETCH_ASSOC);
-    }
 }

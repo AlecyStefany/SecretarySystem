@@ -1,17 +1,13 @@
 <div class="mb-3 d-flex gap-2 flex-wrap align-items-center">
-  <select id="filterCourse" class="form-select" style="width: 250px;">
+  <select id="filterCourse" class="form-select filter-select" style="width: 250px;">
     <option value="">Todos os Cursos</option>
   </select>
 
   <button id="btnFilter" class="btn btn-primary">Filtrar</button>
   <button id="btnClear" class="btn btn-secondary">Limpar</button>
 
-  <button
-    id="btnNewRegistration"
-    class="btn btn-success ms-auto"
-    data-bs-toggle="modal"
-    data-bs-target="#registrationModal"
-  >
+  <button id="btnNewRegistration" class="btn btn-success ms-auto" data-bs-toggle="modal"
+    data-bs-target="#registrationModal">
     Nova Matrícula
   </button>
 </div>
@@ -34,17 +30,13 @@
   <button id="btnNext" class="btn btn-outline-primary" disabled>Próximo</button>
 </div>
 
-<div class="modal fade" id="registrationModal" tabindex="-1" aria-labelledby="registrationModalLabel" aria-hidden="true">
+<div class="modal fade" id="registrationModal" tabindex="-1" aria-labelledby="registrationModalLabel"
+  aria-hidden="true">
   <div class="modal-dialog">
     <form id="registrationForm" class="modal-content">
       <div class="modal-header">
         <h5 id="registrationModalLabel" class="modal-title">Nova Matrícula</h5>
-        <button
-          type="button"
-          class="btn-close"
-          data-bs-dismiss="modal"
-          aria-label="Fechar"
-        ></button>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Fechar"></button>
       </div>
 
       <div class="modal-body">
@@ -69,11 +61,7 @@
 
       <div class="modal-footer">
         <button type="submit" class="btn btn-primary">Salvar</button>
-        <button
-          type="button"
-          class="btn btn-secondary"
-          data-bs-dismiss="modal"
-        >
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
           Cancelar
         </button>
       </div>
